@@ -1,35 +1,16 @@
 <h1> Project-2: Extract Transform Load </h1>
 <h3>  </h3>
 
-For this project we decided to investigate if home value has any correlation to brewery location.
+For this project we decided to investigate if breweries and home values have any correlation.
 
-The brewery API data we used is from a free, open database containing brewery information from around the world. The data retrieved from the API call included brewery id, name, brewery type, address, city, state, postal code, country, longitude, latitude, phone, and website url.
-
-According to openbrewery.org the data set was last updated in October 2022.
+The brewery API data we used is from a free, open database containing brewery information from around the world. The data retrieved from the API call included information like a unique brewery id, brewery name, brewery type, address, city, state, postal code, country, longitude, latitude, phone number, and website url. According to the website we got the data from the dataset was last updated in October 2022.
 
 https://www.openbrewerydb.org/documentation
 <hr />
 
-The home value information was retrieved from Zillow.
-Zillow publishes housing data on their website by organinzing it by Data Type and Geography.
-The dataset we used contained the Zillow Home Value Index (ZHVI) smoothed and seasonally adjusted.
-The CSV contained the ZHVI information by month beginning in January 2000.
-Since we only care about the current values of homes we decided to use the postal code, county, and ZHVI data from 11/30/2022 from Zillow.
+The home value data was retrieved from Zillow. Zillow publishes housing data on their website by organinzing it by Data Type and Geography. The dataset (CSV) we used contained the Zillow Home Value Index (ZHVI) that was smoothed and seasonally adjusted. The data from the Zillow CSV we ended up using contained the postal code, county, and ZHVI from 11/30/2022. The original CSV contained all of the ZHVI information by month beginning in January 2000 through November 2022. We decided to omit previous months' data since we only were interested in current trends. 
 
 https://www.zillow.com/research/data/
-<hr />
-
-The ZHVI data csv contained information from many more postal codes than the brewery data allowing us to gather information about areas that have breweries and areas that do not have breweries.
-
-By combining the Brewery data with Zillow Home Value Index data we can look further into questions like:
-<ol>
-  <li>Is the number of breweries correlated with home values in the same zipcode?
-  <li>Is the number of breweries correlated with states that have legalized other recreational drugs?
-  <li>Does home value differ in areas that contain breweries and in areas without breweries?
-</ol>
-
-Overall the data can be used to target specific groups and areas that would be more receptive to having breweries nearby.
-Targeting areas with higher home values could lead to a more successful brewery business.
 <hr />
 
 <h3>Data extraction:</h3>
@@ -56,7 +37,7 @@ Transformation of the Zillow ZHSI data consisted of the following:
   <li> renamed the 11/30/2022 column to ZHVI (or Zillow Home Value Index),
   <li> created a smaller subset table to to merge with the Open Brewery data.
 </ol>
-The Zillow ZHSI and Open Brewery DataFrames were merged on "postal_code" or "zipcode" using a left join to preserve Zillow data from zip codes without breweries.
+The Zillow ZHSI and Open Brewery DataFrames were merged on "postal_code" or "zipcode" using a left join to preserve Zillow data from zip codes without breweries. The merged data was saved as mergeall.csv.
 <hr />
 <h3>Data Loading (Mongo database):</h3>
 
@@ -65,21 +46,6 @@ The Zillow ZHSI & Open Brewery merged DataFrame was used to create a list of dic
 A Mongo database "Proj2_ETL" and collection "homebrew" were created.  The list of dictionaries was inserted into the homebrew collection.
 <hr />
 <h3>Data Loading (SQL database):</h3>
-
-The Openbrewery data 
-
-
-
-<hr />
-**Credit:**
-- Chris Gruenhagen
-- Paul Brichta
-
-December 2022
-
-----------
-Loading into an SQL database
-
 To load the data into a SQL database I created dataframes, and then exported to CSV. The CSVs contained the data I wanted to include on each specific table.
 1. The table brewery_id contains the unique brewery id, name, and brewery_type.
 2. The table brewery_address contains the unique brewery id, address, city, state, postal code, and country.
@@ -99,4 +65,30 @@ The limitation here is we cannot see if there are multiple breweries located in 
 
 The primary key (id) links table 1 to tables 2, 3, and 4. And a foreign key (postal_code) links the brewery_address table to the brewery_zvhi table.
 This way we can analyze the Zillow Home Value Index at the postal codes that have breweries located in them.
-The data base can be used to help answer questions like:
+
+The ZHVI data csv contained information from many more postal codes than the brewery data allowing us to gather information about areas that have breweries and areas that do not have breweries.
+<hr />
+
+By combining Brewery data with Zillow Home Value Index data we could use this information to answer questions like:
+<ol>
+  <li>Is the number of breweries correlated with home value in the same zipcode, county, state?
+  <li>Do home values differ in areas that contain breweries versus areas that do not have breweries?
+  <li>What types of breweries are commonly located in areas with different home values?
+</ol>
+
+With additional information we could look into things like: 
+<ol>
+  <li>The number of breweries correlated with states that have legalized other recreational drugs?
+  <li>The crime rates in areas with breweries and without breweries based on location at the city, county, and state level.
+</ol>
+
+Overall the data can be used to pinpoint specific areas and socioeconomic groups that would be more receptive to having breweries nearby. Operating breweries in areas with higher home values could lead to a more successful business model.
+
+<br>
+
+**Credit:**
+
+- Chris Gruenhagen
+- Paul Brichta
+
+December 2022

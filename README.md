@@ -89,7 +89,7 @@ With additional information we could look into things like:
 
 Overall the data can be used to pinpoint specific areas and socioeconomic groups that would be more receptive to having breweries nearby. Operating breweries in areas with higher home values could lead to a more successful business model.
 
-
+![alt text](ResourcesPB/SQL%20Query%201.png)
 
 <br>
 

@@ -69,6 +69,7 @@ This way we can analyze the Zillow Home Value Index at the postal codes that hav
 The ZHVI data csv contained information from many more postal codes than the brewery data allowing us to gather information about areas that have breweries and areas that do not have breweries.
 <hr />
 
+<h3>Questions</h3>
 By combining Brewery data with Zillow Home Value Index data we could use this information to answer questions like:
 <ol>
   <li>Is the number of breweries correlated with home value in the same zipcode, county, state?

@@ -60,6 +60,9 @@ The Zillow ZHSI and Open Brewery DataFrames were merged on "postal_code" or "zip
 <hr />
 <h3>Data Loading (Mongo database):</h3>
 
+The Zillow ZHSI & Open Brewery merged DataFrame was used to create a list of dictionaries containing all of the relevant data.
+
+A Mongo database "Proj2_ETL" and collection "homebrew" were created.  The list of dictionaries was inserted into the homebrew collection.
 <hr />
 <h3>Data Loading (SQL database):</h3>
 

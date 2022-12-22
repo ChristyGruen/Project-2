@@ -89,7 +89,15 @@ With additional information we could look into things like:
 
 Overall the data can be used to pinpoint specific areas and socioeconomic groups that would be more receptive to having breweries nearby. Operating breweries in areas with higher home values could lead to a more successful business model.
 
+**With the help of Alexander Booth TA we were able to look into specific queries of interest in our SQL database**
+
+Home value per breweries in each state ascending. We can see Michigan has the lowest home value per amount of breweries
 ![alt text](ResourcesPB/SQL%20Query%201.png)
+
+<br>
+
+Postal codes sorted by average home value and the number of breweries in each postal code
+![alt text](ResourcesPB/SQL%20Query%202.png)
 
 <br>
 

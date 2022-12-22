@@ -44,7 +44,9 @@ The Zillow ZHSI and Open Brewery DataFrames were merged on "postal_code" or "zip
 The Zillow ZHSI & Open Brewery merged DataFrame was used to create a list of dictionaries containing all of the relevant data.
 
 A Mongo database "Proj2_ETL" and collection "homebrew" were created.  The list of dictionaries was inserted into the homebrew collection.
+![alt text](Resources/Project2%20ETL%20Mongodb%20Screenshot%202022-12-20%20191856.png)
 <hr />
+
 <h3>Data Loading (SQL database):</h3>
 To load the data into a SQL database I created dataframes, and then exported to CSV. The CSVs contained the data I wanted to include on each specific table.
 1. The table brewery_id contains the unique brewery id, name, and brewery_type.
@@ -67,6 +69,8 @@ The primary key (id) links table 1 to tables 2, 3, and 4. And a foreign key (pos
 This way we can analyze the Zillow Home Value Index at the postal codes that have breweries located in them.
 
 The ZHVI data csv contained information from many more postal codes than the brewery data allowing us to gather information about areas that have breweries and areas that do not have breweries.
+
+![alt text](ResourcesPB/SQL%20ERD.pgerd.png)
 <hr />
 
 <h3>Questions</h3>
@@ -84,6 +88,8 @@ With additional information we could look into things like:
 </ol>
 
 Overall the data can be used to pinpoint specific areas and socioeconomic groups that would be more receptive to having breweries nearby. Operating breweries in areas with higher home values could lead to a more successful business model.
+
+
 
 <br>
 

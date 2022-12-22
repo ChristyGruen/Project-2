@@ -56,3 +56,27 @@ The Openbrewery data
 - Paul Brichta
 
 December 2022
+
+----------
+Loading into an SQL database
+
+To load the data into a SQL database I created dataframes, and then exported to CSV. The CSVs contained the data I wanted to include on each specific table.
+1. The table brewery_id contains the unique brewery id, name, and brewery_type.
+2. The table brewery_address contains the unique brewery id, address, city, state, postal code, and country.
+3. The table brewery_location contains the unique brewery id, longitude, and latitude.
+4. The table brewery_contact contains the unique brewery id, phone number, and website url.
+5. The table brewery_zhvi contains the postal code, county, and Zillow Home Value Index.
+
+When importing the CSV files into the SQL database I originally ran into an error because the entire data set contained many postal codes that did not have any breweries.
+By including these postal codes without breweries we could analyze things like home value where breweries were not present.
+This created a problem where the primary key (id) was left blank in the areas without breweries.
+I then had to go back into the python file and use the dropna() command to drop the rows where there were no breweries located.
+I created new CSVs I could import that did not contain info from postal codes that did not have breweries.
+This limited the first 4 tables to only the breweries.
+
+The 5th table brewery_zvhi contains only the data from the Zillow website that lists all the ZVHI data for postal codes.
+The limitation here is we cannot see if there are multiple breweries located in any postal code.
+
+The primary key (id) links table 1 to tables 2, 3, and 4. And a foreign key (postal_code) links the brewery_address table to the brewery_zvhi table.
+This way we can analyze the Zillow Home Value Index at the postal codes that have breweries located in them.
+The data base can be used to help answer questions like:
